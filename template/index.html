@@ -1,0 +1,69 @@
+<!-- //index.html -->
+{% extends "layout.html" %}
+{% block body %}
+<style>tr:nth-child(odd) {background-color: gray;}
+  body{
+    background:url("https://images.unsplash.com/photo-1531685250784-7569952593d2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80");
+    background-size: 100%;
+}
+th, td {
+  border-radius: 10px;
+}
+</style>  
+  <div class="col-md-8">
+    <form action="{{url_for('carform')}}" style="margin-right: -10cm;">
+      <span style="font-size: 1.2cm;font-family: Fantasy;">Want to SELL your Car on Fair Price ! REGISTER HERE </span>
+      <button style="background-color: #4CAF50; /* Green */
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      border-radius: 12px;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;">
+      Sell Your Car
+    </button></form>
+    <table id="example" class="table table-striped table-bordered" style="background-color: #4CAF50;font-family: Fantasy;block-size: 7cm">
+      <thead>
+        <tr>
+          <td>ID</td>
+          <td>Car</td>
+          <td>Year</td>
+          <td>Location</td>
+          <td>Kilometer Driven</td>
+          <td>Fuel Type</td>
+          <td>Transmission</td>
+          <td>Mileage (Km/L)</td>
+          <td>Engine CC</td>
+          <td>Power (BHP)</td>
+          <td>Seats</td>
+          <td>Owner</td>
+          <td>Phone</td>
+          <td>Price (Lakh)</td>
+        </tr>
+      </thead>
+      <tbody>
+        {% for data in cars %}
+        <tr style="font-family: Cursive;">
+          <td>{{data.id}}</td>
+          <td>{{data.car_name}}</td>
+          <td>{{data.year}}</td>
+          <td>{{data.location}}</td>
+          <td>{{data.kilometer_driven}}</td>
+          <td>{{data.fuel_type}}</td>
+          <td>{{data.transmission}}</td>
+          <td>{{data.mileage_kmpl}}</td>
+          <td>{{data.engine_cc}}</td>
+          <td>{{data.power_bhp}}</td>
+          <td>{{data.seats}}</td>
+          <td>{{data.name}}</td>
+          <td>{{data.phone_number}}</td>
+          <td>{{data.price}}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

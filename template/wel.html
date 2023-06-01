@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!----======== CSS ======== -->
+    <style>
+        /* ===== Google Font Import - Poppins ===== */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap');
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #71b7e6, #9b59b6);
+        }
+
+        .container {
+            position: relative;
+            max-width: 1000px;
+            width: 100%;
+            border-radius: 10px;
+            padding: 40px;
+            margin: 0 15px;
+            background-color: #fff;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .container header {
+            position: relative;
+            font-size: 20px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .container header::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -2px;
+            height: 3px;
+            width: 27px;
+            border-radius: 8px;
+            background-color: #4070f4;
+        }
+
+        .container form {
+            position: relative;
+            margin-top: 16px;
+            min-height: 550px;
+            background-color: #fff;
+            overflow: hidden;
+        }
+
+        .container form .form {
+            position: absolute;
+            background-color: #fff;
+            transition: 0.3s ease;
+        }
+
+
+        .container form .title {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 16px;
+            font-weight: 500;
+            margin: 6px 0;
+            color: #333;
+        }
+
+        .container form .fields {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        form .fields .input-field {
+            display: flex;
+            width: calc(100% / 3 - 15px);
+            flex-direction: column;
+            margin: 4px 0;
+        }
+
+        .input-field label {
+            font-size: 12px;
+            font-weight: 500;
+            color: #2e2e2e;
+        }
+
+        .input-field input,
+        select {
+            outline: none;
+            font-size: 14px;
+            font-weight: 400;
+            color: #333;
+            border-radius: 5px;
+            border: 1px solid #aaa;
+            padding: 0 15px;
+            height: 42px;
+            margin: 8px 0;
+        }
+
+        .input-field input :focus,
+        .input-field select:focus {
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.13);
+        }
+
+        .input-field select {
+            color: #707070;
+        }
+
+        .container form button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 30px;
+            max-width: 200px;
+            width: 100%;
+            border: none;
+            outline: none;
+            color: #fff;
+            border-radius: 5px;
+            margin: 25px 0;
+            background-color: #4070f4;
+            transition: all 0.3s linear;
+            cursor: pointer;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <div class="container">
+        <header>Used Car prediction</header>
+
+        <form method="POST" action="{{url_for('fun')}}">
+            <div class="form first">
+                <div class="details personal">
+                    <span class="title">Personal Details</span>
+
+                    <div class="fields">
+                        <div class="input-field">
+                            <label>Full Name</label>
+                            <input type="text" placeholder="Enter your name" name="Name" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Email</label>
+                            <input type="text" placeholder="Enter your email" name="email" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Mobile Number</label>
+                            <input type="number" placeholder="Enter mobile number" name="Mob" required>
+                        </div>
+                        
+                    </div>
+                </div>
+
+                <div class="details ID">
+                    <span class="title">Car Details</span>
+
+                    <div class="fields">
+                        <div class="input-field">
+                            <label>Car Model</label>
+                            <input type="text" placeholder="Enter your car model" name="car_mod" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Location</label>
+                            <select type="text" name="loc" required>
+                                <option disabled selected>Select option</option>
+                                <option>Bangalore</option>
+                                <option>Chennai</option>
+                                <option>Coimbatore</option>
+                                <option>Delhi</option>
+                                <option>Hyderabad</option>
+                                <option>Jaipur</option>
+                                <option>Kochi</option>
+                                <option>Kolkata</option>
+                                <option>Mumbai</option>
+                                <option>Pune</option>
+                            </select>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Year</label>
+                            <input type="number" placeholder="Enter year" name="yr" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Killometers Driven</label>
+                            <input type="number" placeholder="Enter km driven" name="km" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Engine Cubic Capacity</label>
+                            <input type="number" step="0.01" placeholder="Enter Engine CC" name="en_cc" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Power (bhp)</label>
+                            <input type="number" step="0.01" placeholder="Enter Power " name="pwr" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Number of Seats</label>
+                            <input type="number" placeholder="Enter no. of seats " name="seat" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Mileage (km/l)</label>
+                            <input type="number" step="0.01" placeholder="Enter Mileage " name="mil" required>
+                        </div>
+                        
+                        <div class="input-field">
+                            <label>Estimitted Price (Lakh)</label>
+                            <input type="number" step="0.01" placeholder="Enter your estimitted price " name="est_price" required>
+                        </div>
+                        
+                        <div class="input-field">
+                            <label>Transmission Type</label>
+                            <select type="text" name="tran" required>
+                                <option disabled selected>Select option</option>
+                                <option>Manual</option>
+                                <option>Auto</option>
+                            </select>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Owner Type</label>
+                            <select type="text" name="own" required>
+                                <option disabled selected>Select option</option>
+                                <option>First</option>
+                                <option>Second</option>
+                                <option>Third</option>
+                                <option>Fourth & above</option>
+                            </select>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Fuel Type</label>
+                            <select type="text" name="fuel" required>
+                                <option disabled selected>Select option</option>
+                                <option>Petrol</option>
+                                <option>Diesel</option>
+                                <option>LPG</option>
+                            </select>
+                        </div>
+                        
+                    </div>
+
+                </div>
+                <center>
+                    <button type="submit">Submit</button>
+                </center>
+            </div>
+
+        </form>
+        <a href="/"><h2>HOME PAGE</h2></a>
+    </div>
+    <h3>{{ prediction_text }}</h3>
+    <!--<script src="script.js"></script>-->
+</body>
+
+</html>
